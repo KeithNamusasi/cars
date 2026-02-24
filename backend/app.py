@@ -105,10 +105,16 @@ def get_cars():
     location = request.args.get('location')
     min_price = request.args.get('min_price')
     max_price = request.args.get('max_price')
+    search = request.args.get('search')
     
     query = 'SELECT * FROM cars WHERE 1=1'
     params = []
     
+    if search:
+        query += ' AND (make LIKE ? OR model LIKE ? OR category LIKE ?)'
+        search_term = f'%{search}%'
+        params.extend([search_term, search_term, search_term])
+        
     if make:
         query += ' AND make LIKE ?'
         params.append(f'%{make}%')

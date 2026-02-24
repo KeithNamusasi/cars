@@ -46,11 +46,14 @@ function App() {
   }
 
   const handleSearch = (searchTerm) => {
-    const filtered = cars.filter(car =>
-      car.make.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      car.model.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    setFilteredCars(filtered)
+    // If search term is empty, show all cars
+    if (!searchTerm.trim()) {
+      setFilteredCars(cars)
+      return
+    }
+    
+    // Use backend search for better performance and consistency
+    fetchCars({ search: searchTerm })
   }
 
   const handleFilter = (filters) => {
