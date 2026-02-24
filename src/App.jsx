@@ -7,6 +7,8 @@ import CarListings from './components/CarListings'
 import CarDetail from './components/CarDetail'
 import Cart from './components/Cart'
 import Footer from './components/Footer'
+import CarAZ from './components/CarAZ'
+import CategoryPage from './components/CategoryPage'
 
 function App() {
   const [cars, setCars] = useState([])
@@ -87,23 +89,25 @@ function App() {
           <Route path="/" element={
             <>
               <Hero onSearch={handleSearch} />
-              <Filters
-                makes={makes}
+              <Filters 
+                makes={makes} 
                 onFilter={handleFilter}
                 onReset={() => setFilteredCars(cars)}
               />
-              <CarListings
-                cars={filteredCars}
-                loading={loading}
+              <CarListings 
+                cars={filteredCars} 
+                loading={loading} 
                 onAddToCart={addToCart}
               />
             </>
           } />
+          <Route path="/cars" element={<CarAZ />} />
+          <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/car/:id" element={<CarDetail onAddToCart={addToCart} />} />
           <Route path="/cart" element={
-            <Cart
-              cart={cart}
-              onRemove={removeFromCart}
+            <Cart 
+              cart={cart} 
+              onRemove={removeFromCart} 
               onClear={clearCart}
             />
           } />

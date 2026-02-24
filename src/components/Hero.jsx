@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import CarAnimation from './CarAnimation'
 
 function Hero({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState('')
@@ -43,14 +44,31 @@ function Hero({ onSearch }) {
         </form>
 
         <div className="mt-12 flex flex-wrap justify-center gap-4 text-sm font-bold text-gray-400 uppercase tracking-widest">
-          <span>Cars</span>
+          <Link to="/category/car" className="flex items-center gap-2 hover:text-blue-600 transition-colors">
+            <img src="https://img.icons8.com/ios-filled/16/gray/sedan.png" alt="Cars" />
+            Cars
+          </Link>
           <span className="w-1 h-1 rounded-full bg-gray-300 self-center"></span>
-          <span>Trucks</span>
+          <Link to="/category/truck" className="flex items-center gap-2 hover:text-blue-600 transition-colors">
+            <img src="https://img.icons8.com/ios-filled/16/gray/pickup-truck.png" alt="Trucks" />
+            Trucks
+          </Link>
           <span className="w-1 h-1 rounded-full bg-gray-300 self-center"></span>
-          <span>Buses</span>
+          <Link to="/category/bus" className="flex items-center gap-2 hover:text-blue-600 transition-colors">
+            <img src="https://img.icons8.com/ios-filled/16/gray/bus.png" alt="Buses" />
+            Buses
+          </Link>
           <span className="w-1 h-1 rounded-full bg-gray-300 self-center"></span>
-          <span className="text-indigo-600">Supercars</span>
+          <Link to="/category/supercar" className="flex items-center gap-2 text-indigo-600 hover:text-blue-600 transition-colors">
+            <img src="https://img.icons8.com/ios-filled/16/indigo/race-car.png" alt="Supercars" />
+            Supercars
+          </Link>
         </div>
+      </div>
+
+      {/* Car Animation */}
+      <div className="mt-16">
+        <CarAnimation />
       </div>
     </section>
   )
